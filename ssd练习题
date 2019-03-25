@@ -5,6 +5,10 @@
 SSD借鉴了fast-rcnn的anchor
 
 代码题：
-1.实现对VOC数据集的读取
-2.实现论文SSD的backbone结构
-3.实现SSD的head结构
+1.实现论文SSD的backbone结构
+2.实现SSD的head结构
+3.读取一张图片做训练
+4.对训练的图片查看演示效果
+4.对图片数据进行增强处理
+5.实现对VOC数据集的读取
+6.使用该框架对VOC进行训练
