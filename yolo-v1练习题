@@ -1,4 +1,7 @@
 1.根据论文实现 yolo-v1的head
 
-2.参考论文Figure3的结构用pytorch实现
+2.参考论文[1]中Figure3的结构用pytorch实现
 
+
+
+[1] 论文地址：https://arxiv.org/pdf/1506.02640.pdf
