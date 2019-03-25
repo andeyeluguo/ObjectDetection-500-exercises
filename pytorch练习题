@@ -1,7 +1,12 @@
-1.使用pytorch实现lenet网络
+1.使用pytorch实现lenet网络,仿造[1]的网络结构
 2.使用pytorch实现alexnet网络  
 3.使用pytorch实现vgg16网络
 4.使用pytorch实现resnet-18网络
 5.使用pytorch实现resnet-101网络
 
+
 测试用例
+
+
+[1] https://github.com/BVLC/caffe/blob/master/examples/mnist/lenet.prototxt
+
