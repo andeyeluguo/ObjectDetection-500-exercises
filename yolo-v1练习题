@@ -1,6 +1,6 @@
 1.根据论文实现 yolo-v1的head
 
-2.参考论文[1]和[4]中Figure3的结构用pytorch实现
+2.参考论文[1]和[4]中Figure3的结构用pytorch实现，可以参考[5]来实现
 
 
 
@@ -8,3 +8,4 @@
 [2] pytorch参考手册：https://pytorch.org/docs/stable/index.html
 [3] pytorch中文文档：https://pytorch-cn.readthedocs.io/zh/latest/
 [4] https://github.com/pjreddie/darknet/blob/master/cfg/yolov1.cfg
+[5] cycle-gan的pytorch实现 https://github.com/eriklindernoren/PyTorch-GAN/blob/master/implementations/cyclegan/models.py
