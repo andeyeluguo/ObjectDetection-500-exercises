@@ -1,0 +1,14 @@
+import xml.etree.ElementTree as ET
+tree = ET.parse('000005.xml')
+root = tree.getroot()
+objects = root.findall('object')
+img = cv2.imread('000005.jpg')
+for object in objects:
+    name = object.find('name').text
+    bndbox = object.find('bndbox')
+    xmin = int(bndbox.find('xmin').text)
+    ymin = int(bndbox.find('ymin').text)
+    xmax = int(bndbox.find('xmax').text)
+    ymax = int(bndbox.find('ymax').text)
+    cv2.rectangle(img,[xmin:xmax,ymin:ymax])
+cv2.imshow(img)
