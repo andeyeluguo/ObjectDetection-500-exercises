@@ -5,7 +5,7 @@
 SSD借鉴了fast-rcnn的anchor
 
 代码题：
-1.实现论文SSD的backbone结构
+1.实现论文SSD的backbone结构，使用LEnet,只采用连个分辨率的feature map
 2.实现SSD的head结构
   1.根据论文实现priorbox层
   2.实现Muiltibox loss函数层
