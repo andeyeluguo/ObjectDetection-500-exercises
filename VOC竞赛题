@@ -1,3 +1,4 @@
-题目1. 并写读取数据集[1]的一个xml文件和对应的一张图片的代码
+题目1. 并写读取数据集[1]的一个xml文件和对应的一张图片的代码，xml文件的读取可以参考[2]
 
 [1] VOC数据集路径：https://pjreddie.com/projects/pascal-voc-dataset-mirror/
+[2] xml类库：https://docs.python.org/3/library/xml.etree.elementtree.html
