@@ -7,7 +7,7 @@ SSD借鉴了fast-rcnn的anchor
 代码题：
 1.实现论文SSD的backbone结构
 2.实现SSD的head结构
-  1.实现priorbox层
+  1.根据论文实现priorbox层
 3.读取一张图片做训练
 4.对训练的图片查看演示效果
 4.对图片数据进行增强处理
