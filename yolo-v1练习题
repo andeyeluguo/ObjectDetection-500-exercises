@@ -2,7 +2,7 @@
 
 2.参考论文[1]和[4]中Figure3的结构用pytorch实现，可以参考[5]来实现
 
-
+3.将原生yolo的cfg文件直接转换为代码
 
 [1] YOLOv1论文地址：https://arxiv.org/pdf/1506.02640.pdf
 [2] pytorch参考手册：https://pytorch.org/docs/stable/index.html
