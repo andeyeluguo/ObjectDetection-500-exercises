@@ -9,6 +9,8 @@
 5.博客[6]中说到，yolov1是将一幅图片分成7x7个网格(grid cell)，某个物体的中心落在这个网格中此网格就负责预测这个物体。
 试计算000005.jpg文件中的物体分别处于哪个网格。
 
+6.根据论文[1]中的公式(3)编写loss函数的代码
+
 [1] YOLOv1论文地址：https://arxiv.org/pdf/1506.02640.pdf
 [2] pytorch参考手册：https://pytorch.org/docs/stable/index.html
 [3] pytorch中文文档：https://pytorch-cn.readthedocs.io/zh/latest/
