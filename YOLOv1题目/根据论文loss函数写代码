@@ -1,0 +1,34 @@
+lambda_coord = 5
+lambda_noobj = 0.5
+S = 7
+B = 2
+loss1 = 0
+loss2 = 0
+loss3 = 0
+loss4 = 0
+loss5 = 0
+S_2 = S*S
+
+#center_x and center_y
+for i in range(S_2):
+    for j in range(B):
+        loss1 = loss1 + Lobj[i][j] * [(x[i] - x_cap[i])^2 + (y[i] - y_cap[i])^2] 
+loss1 = lambda_coord*loss1
+#width and height
+for i in range(S_2):
+    for j in range(B):
+        loss2= loss2 + Lobj[i][j] * [(sqrt(w[i]) - sqrt(w_cap[i]))^2 + (sqrt(h[i]) - sqrt(h_cap[i]))^2]
+loss2 = lambda_coord*loss2       
+#confidence
+for i in range(S_2):
+    for j in range(B):
+        loss3 = loss3 + Lobj[i][j] * (C[i] - C_cap[i])^2
+for i in range(S_2):
+    for j in range(B):
+        loss4 = loss4 + Lnooj[i][j] * (C[i] - C_cap[i])^2
+loss4 = lambda_noobj * loss4
+# class probablity
+for i in range(S_2):
+    for c in classes:
+        loss5 = loss5 + (p[i][c] - p_cap[i][c])^2
+loss = loss1 + loss2 + loss3 + loss4 + loss5
