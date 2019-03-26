@@ -1,0 +1,22 @@
+import xml.etree.ElementTree as ET
+tree = ET.parse('000005.xml')
+root = tree.getroot()
+objects = root.findall('object')
+img = cv2.imread('000005.jpg')
+size = root.find('size')
+width = int(size.find('width').text)
+height = int(size.find('height').text)
+depth = int(size.find('depth').text)
+for object in objects:
+    name = object.find('name').text
+    bndbox = object.find('bndbox')
+    xmin = int(bndbox.find('xmin').text)
+    ymin = int(bndbox.find('ymin').text)
+    xmax = int(bndbox.find('xmax').text)
+    ymax = int(bndbox.find('ymax').text)
+    x_center = xmin  + (xmax - xmin)/2.0
+    y_center = ymin + (ymax - ymin)/2.0
+    x_index = 7*x_center/width # width/7=x_center/x_index
+    y_index = 7*y_center/height#cordinate
+    #cv2.rectangle(img,[xmin:xmax,ymin:ymax])
+#cv2.imshow(img)
