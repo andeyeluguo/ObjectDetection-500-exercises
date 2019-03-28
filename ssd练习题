@@ -3,6 +3,7 @@
 参考答案：SSD借鉴了YOLOv1把检测问题当成一个回归问题，YOLOv2则借鉴了SSD的多尺度。
 2.SSD与fast-rcnn的关系是什么
 SSD借鉴了fast-rcnn的anchor
+3.简述hard example mining
 
 代码题：
 1.实现论文SSD的backbone结构，使用LEnet,只采用连个分辨率的feature map
@@ -14,3 +15,4 @@ SSD借鉴了fast-rcnn的anchor
 4.对图片数据进行增强处理
 5.实现对VOC数据集的读取
 6.使用该框架对VOC进行训练
+7.实现hard example mining的核心代码
