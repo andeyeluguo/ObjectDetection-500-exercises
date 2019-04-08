@@ -1,0 +1,129 @@
+//来自src/caffe/util/im_transforms.cpp
+#include <random>
+//判断是否相等
+void CHECK_GE(float upper,float lower,string str)
+{
+    if(upper < lower)
+    {
+        cout<<"error!"<<endl;
+        cout<<str<<endl;
+        exit();
+    }
+}
+//产生随机数
+//参考https://blog.csdn.net/qq_22080999/article/details/82533368
+float caffe_rng_uniform(float a,float b)
+{
+    default_random_engine e(time(0));
+	uniform_real_distribution<float> u(a,b);
+    return u(e);
+}
+void RandomBrightness(const cv::Mat& in_img, cv::Mat* out_img,
+    const float brightness_prob, const float brightness_delta) {
+  float prob = caffe_rng_uniform(0.f, 1.f);
+  if (prob < brightness_prob) {
+    CHECK_GE(brightness_delta, 0, "brightness_delta must be non-negative.");
+    float delta = caffe_rng_uniform(-brightness_delta, brightness_delta);
+    AdjustBrightness(in_img, delta, out_img);
+  } else {
+    *out_img = in_img;
+  }
+}
+
+void AdjustBrightness(const cv::Mat& in_img, const float delta,
+                      cv::Mat* out_img) {
+  if (fabs(delta) > 0) {
+    in_img.convertTo(*out_img, -1, 1, delta);
+  } else {
+    *out_img = in_img;
+  }
+}
+
+void RandomContrast(const cv::Mat& in_img, cv::Mat* out_img,
+    const float contrast_prob, const float lower, const float upper) {
+  float prob = caffe_rng_uniform(0.f, 1.f);
+  if (prob < contrast_prob) {
+    CHECK_GE(upper, lower, "contrast upper must be >= lower.");
+    CHECK_GE(lower, 0, "contrast lower must be non-negative.");
+    float delta = caffe_rng_uniform(lower, upper);
+    AdjustContrast(in_img, delta, out_img);
+  } else {
+    *out_img = in_img;
+  }
+}
+
+void AdjustContrast(const cv::Mat& in_img, const float delta,
+                    cv::Mat* out_img) {
+  if (fabs(delta - 1.f) > 1e-3) {
+    in_img.convertTo(*out_img, -1, delta, 0);
+  } else {
+    *out_img = in_img;
+  }
+}
+
+void RandomSaturation(const cv::Mat& in_img, cv::Mat* out_img,
+    const float saturation_prob, const float lower, const float upper) {
+  float prob = caffe_rng_uniform(0.f, 1.f);
+  if (prob < saturation_prob) {
+    CHECK_GE(upper, lower, "saturation upper must be >= lower.");
+    CHECK_GE(lower, 0, "saturation lower must be non-negative.");
+    float delta;
+    caffe_rng_uniform(lower, upper);
+    AdjustSaturation(in_img, delta, out_img);
+  } else {
+    *out_img = in_img;
+  }
+}
+
+void AdjustSaturation(const cv::Mat& in_img, const float delta,
+                      cv::Mat* out_img) {
+  if (fabs(delta - 1.f) != 1e-3) {
+    // Convert to HSV colorspae.
+    cv::cvtColor(in_img, *out_img, CV_BGR2HSV);
+
+    // Split the image to 3 channels.
+    vector<cv::Mat> channels;
+    cv::split(*out_img, channels);
+
+    // Adjust the saturation.
+    channels[1].convertTo(channels[1], -1, delta, 0);
+    cv::merge(channels, *out_img);
+
+    // Back to BGR colorspace.
+    cvtColor(*out_img, *out_img, CV_HSV2BGR);
+  } else {
+    *out_img = in_img;
+  }
+}
+
+void RandomHue(const cv::Mat& in_img, cv::Mat* out_img,
+               const float hue_prob, const float hue_delta) {
+  float prob = caffe_rng_uniform(0.f, 1.f);
+  if (prob < hue_prob) {
+    CHECK_GE(hue_delta, 0, "hue_delta must be non-negative.");
+    float delta = caffe_rng_uniform(-hue_delta, hue_delta);
+    AdjustHue(in_img, delta, out_img);
+  } else {
+    *out_img = in_img;
+  }
+}
+
+void AdjustHue(const cv::Mat& in_img, const float delta, cv::Mat* out_img) {
+  if (fabs(delta) > 0) {
+    // Convert to HSV colorspae.
+    cv::cvtColor(in_img, *out_img, CV_BGR2HSV);
+
+    // Split the image to 3 channels.
+    vector<cv::Mat> channels;
+    cv::split(*out_img, channels);
+
+    // Adjust the hue.
+    channels[0].convertTo(channels[0], -1, 1, delta);
+    cv::merge(channels, *out_img);
+
+    // Back to BGR colorspace.
+    cvtColor(*out_img, *out_img, CV_HSV2BGR);
+  } else {
+    *out_img = in_img;
+  }
+}
