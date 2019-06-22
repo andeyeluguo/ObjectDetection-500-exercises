@@ -4,7 +4,7 @@
 3.使用pytorch实现vgg16网络
 4.使用pytorch实现resnet-18网络
 5.使用pytorch实现resnet-101网络
-
+6.使用pytorch实现对类似caffe模型格式的prototxt和模型的读取和训练(mnist为例)
 
 测试用例
 
